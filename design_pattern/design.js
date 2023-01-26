@@ -3,7 +3,7 @@ class Telephone{
         this._observers = Set()
     }
 
-    addPhoneNumber(){
+    addPhoneNumber(phoneNumber){
         this._observers.push(phoneNumber)
 
         return () => {
@@ -11,7 +11,10 @@ class Telephone{
         }
     }
 
-    removePhoneNumber(){}
+    removePhoneNumber(phoneNumber){
+        let observers = this._observers.filter(num => num !== phoneNumber)
+        this._observers = observers
+    }
 
     dailPhoneNumber(){}
     
