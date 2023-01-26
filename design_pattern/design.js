@@ -1,29 +1,37 @@
 class Telephone{
     constructor(){
-        this._observers = Set()
+        this._dataBase = Set()
     }
 
     addPhoneNumber(phoneNumber){
-        this._observers.push(phoneNumber)
-
-        return () => {
-            this._observers.filter(num => num !== phoneNumber);
-        }
+        this._dataBase.push(phoneNumber)
     }
 
     removePhoneNumber(phoneNumber){
-        let observers = this._observers.filter(num => num !== phoneNumber)
-        this._observers = observers
+        this._dataBase = this._dataBase.filter(num => num !== phoneNumber)
     }
 
-    dailPhoneNumber(phoneNumber){
-        let isAvailable = this._observers.includes(phoneNumber);
+    dialPhoneNumber(phoneNumber){
+        let isAvailable = this._dataBase.includes(phoneNumber);
         if (isAvailable)
         console.log(`Now Dialling ${phoneNumber}`);
+    }
+
+    notifyObserver(args){
+        this._observers.forEach(observer => {
+            observer(args)
+        });
     }
     
 }
 
+// Observer class
 class Observer{
+    constructor(){
+        this._observers = []
+    }
 
+    addObserver(observer){
+        this._observers.push(observer)
+    }
 }
