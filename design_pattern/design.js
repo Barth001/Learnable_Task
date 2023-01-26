@@ -16,7 +16,11 @@ class Telephone{
         this._observers = observers
     }
 
-    dailPhoneNumber(){}
+    dailPhoneNumber(phoneNumber){
+        let isAvailable = this._observers.includes(phoneNumber);
+        if (isAvailable)
+        console.log(`Now Dialling ${phoneNumber}`);
+    }
     
 }
 
