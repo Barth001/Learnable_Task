@@ -26,12 +26,21 @@ class Telephone{
 }
 
 // Observer class
-class Observer{
+class Observer extends Telephone{
     constructor(){
+        super()
         this._observers = []
     }
 
     addObserver(observer){
-        this._observers.push(observer)
+        this._observers.push(observer);
+    }
+
+    removeObserver(observer){
+        this._observers = this._observers.filter(obs => obs !== observer);
+    }
+
+    notify(data){
+        this._observers.forEach((observer) => observer.notify(data))
     }
 }
