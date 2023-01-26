@@ -1,10 +1,22 @@
 class Telephone{
-    constructor(){}
+    constructor(){
+        this._observers = Set()
+    }
 
-    addPhoneNumber(){}
+    addPhoneNumber(){
+        this._observers.push(phoneNumber)
+
+        return () => {
+            this._observers.filter(num => num !== phoneNumber);
+        }
+    }
 
     removePhoneNumber(){}
 
     dailPhoneNumber(){}
     
+}
+
+class Observer{
+
 }
